@@ -1,12 +1,13 @@
 import React from 'react'
 import "./Checkout.css"
 
+
 function Checkout() {
   return (
     <div>
-      
-    <div class="mainscreen"style={{paddingTop:"100px",alignItems:"center"}}>
-    
+
+      <div class="mainscreen" style={{ paddingTop: "100px", alignItems: "center" }}>
+
         <div class="rightside">
           <form action="">
             <h1>CheckOut</h1>
@@ -23,23 +24,24 @@ function Checkout() {
               <option value="RuPay">RuPay</option>
               <option value="MasterCard">MasterCard</option>
             </select>
-<div class="expcvv">
+            <div class="expcvv">
 
-            <p class="expcvv_text">Expiry</p>
-            <input type="date" class="inputbox" name="exp_date" id="exp_date" required />
+              <p class="expcvv_text">Expiry</p>
+              <input type="date" class="inputbox" name="exp_date" id="exp_date" required />
 
-            <p class="expcvv_text2">CVV</p>
-            <input type="password" class="inputbox" name="cvv" id="cvv" required />
-        </div>
+              <p class="expcvv_text2">CVV</p>
+              <input type="password" class="inputbox" name="cvv" id="cvv" required />
+            </div>
             <p></p>
-            <button type="submit" class="button">CheckOut</button>
+            {/* <a href="/success" className="btn btn-primary shadow-0"> <i className="me-1 fa fa-shopping-basket"></i>CheckOut </a> */}
+            <button type="submit" class="button" ><a href="/success" style={{ color: "white" }}>CheckOut</a></button>
           </form>
         </div>
       </div>
     </div>
-  
 
-   
+
+
   )
 }
 
