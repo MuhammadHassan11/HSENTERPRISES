@@ -34,6 +34,10 @@ body {
   float: right;
 }
 
+.qunatity {
+  padding-top: 10px;
+}
+
 .buttons {
 
   align-items: end;
@@ -41,10 +45,18 @@ body {
   margin-right: -100px;
 }
 
-.remove {
+.remove1 {
   align-items: end;
   float: right;
   margin-top: -100px;
+
+}
+
+.remove {
+  align-items: center;
+  text-align: center;
+  margin-top: 30px;
+
 
 }
 

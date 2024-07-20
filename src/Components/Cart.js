@@ -42,7 +42,7 @@ const Cart = (props) => {
                                         <li key={index}>
                                             <div className="d-flex align-items-center">
                                                 <div class="flex-shrink-0">
-                                                    <img src={selectedImage || product.Image} alt={product.name} width="100" height="100" />
+                                                    <img src={selectedImage || product.image} alt={product.name} width="100" height="100" />
                                                 </div>
 
                                                 <br></br>
@@ -61,11 +61,11 @@ const Cart = (props) => {
                                             <div  >
                                                 {/* <div className="col-md-4 col-6 mb-3"> */}
                                                 {/* <label className="mb-2 d-block">Quantity</label> */}
-                                                <div className="input-group mb-3 " style={{ width: "170px" }}>
+                                                <div className="qunatity input-group mb-3  " style={{ width: "170px" }}>
                                                     <button className="btn btn-white border border-secondary px-3 " onClick={handleDecrement} type="button" id="button-addon1" data-mdb-ripple-color="dark">
                                                         <i className="fas fa-minus"></i>
                                                     </button>
-                                                    <div className="form-control text-between ">{quantity}</div>
+                                                    <div className="form-control text-center ">{quantity}</div>
                                                     {/* <input type="number" className="form-control text-center border border-secondary" Palceholder={quantity} aria-label="Example text with button addon" aria-describedby="button-addon1" /> */}
                                                     <button className="btn btn-white border border-secondary px-3 " onClick={handleIncrement} type="button" id="button-addon2" data-mdb-ripple-color="dark">
                                                         <i className="fas fa-plus"></i>
@@ -78,18 +78,21 @@ const Cart = (props) => {
 
                                             <button className="btn-n" onClick={handleDecrement}>-</button>
                                             <div className="form-control text-between">{quantity}</div>  */}
-                                            <div className='remove'>
-                                                <a href="/checkout"  > <button className="checkout" >  Proceed To CheckOut </button></a>
-                                                < button className="me-1 btn btn-danger shadow-0 " onClick={() => { props.removeToCartHandler() }}>
-                                                    {/* <{a href="/cart" className="btn btn-primary shadow-0"> <i className="me-1 fa fa-shopping-basket"></i> Add to cart </a> */}
-                                                    <i className="me-1 fa fa-trash"></i>
-                                                </button>
+                                            < button className="me-1 btn btn-danger shadow-0 remove1 " onClick={() => { props.removeToCartHandler() }}>
+                                                {/* <{a href="/cart" className="btn btn-primary shadow-0"> <i className="me-1 fa fa-shopping-basket"></i> Add to cart </a> */}
+                                                <i className="me-1 fa fa-trash"></i>
+                                            </button>
 
-                                            </div>
 
                                         </li>
 
+
                                     ))}
+                                    <div className='remove'>
+                                        <a href="/checkout"  > <button className="checkout" >  Proceed To CheckOut </button></a>
+
+
+                                    </div>
 
 
                                 </ul>

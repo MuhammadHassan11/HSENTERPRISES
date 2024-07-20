@@ -1,9 +1,49 @@
 .icon-hover:hover {
-    border-color: #3b71ca !important;
-    background-color: white !important;
-    color: #3b71ca !important;
-  }
-  
-  .icon-hover:hover i {
-    color: #3b71ca !important;
-  }
+  border-color: #3b71ca !important;
+  background-color: white !important;
+  color: #3b71ca !important;
+}
+
+.icon-hover:hover i {
+  color: #3b71ca !important;
+}
+
+.main-image-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.main-image-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Additional images styling */
+.additional-images {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.additional-images img {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  margin: 0 5px;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+.additional-images img:hover {
+  border-color: #007bff;
+}

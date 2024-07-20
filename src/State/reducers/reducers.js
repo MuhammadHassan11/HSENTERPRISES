@@ -1,4 +1,5 @@
-import { Add_To_Cart, Remove_To_Cart, INCREASE_QUANTITY, DECREASE_QUANTITY, SET_SELECTED_IMAGE } from "../constant"
+import { productList } from "../Action/actions";
+import { Add_To_Cart, Remove_To_Cart, INCREASE_QUANTITY, DECREASE_QUANTITY, SET_SELECTED_IMAGE, Set_Products, FETCH_Products, CHECKOUT_SUCCESS } from "../constant"
 const initialState = {
     cartData: [],
     carttotal: 0
@@ -45,6 +46,21 @@ export default function cartItems(state, action) {
                 ...state,
                 selectedImage: action.payload,
             };
+        case FETCH_Products:
+
+            return {
+                ...state,
+
+                products: action.payload,
+            }
+        case CHECKOUT_SUCCESS:
+
+            return {
+                ...state,
+                cartData: [...state.cartData, action.data],
+                carttotal: state.carttotal + 1
+            };
+
         default:
             return state
     }
