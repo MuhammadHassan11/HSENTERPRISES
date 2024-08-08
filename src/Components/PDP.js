@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from "react-redux";
 import { addToCart, setSelectedImage } from "../State/Action/actions";
 import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
 import "./PDP.css";
 
 function PDP(props) {
@@ -12,22 +11,21 @@ function PDP(props) {
   const product = location.state || {}; // Use an empty object as fallback
 
   const [mainImage, setMainImage] = useState(product.image);
-  const [initialImage, setInitialImage] = useState(product.image);
 
   const handleImageClick = (img) => {
     setMainImage(img);
   };
 
-  // Function to reset to initial image
+  // Function to reset to the initial image
   const resetToInitialImage = () => {
-    setMainImage(initialImage);
+    setMainImage(product.image);
   };
 
   return (
     <div>
       <header>
         <div className="p-3 text-center bg-white border-bottom">
-          <div className="container">
+          <div >
             <div className="row gy-3">
               {/* Placeholder for possible logo or other header content */}
             </div>
@@ -103,6 +101,7 @@ function PDP(props) {
                     <select className="form-select border border-secondary" style={{ height: "35px" }}>
                       <option>Small</option>
                       <option>Medium</option>
+
                       <option>Large</option>
                     </select>
                   </div>

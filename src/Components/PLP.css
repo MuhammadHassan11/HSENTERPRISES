@@ -1,0 +1,68 @@
+/* styles.css */
+
+/* Basic reset for consistent box sizing */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+.card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0.7, 0.7, 0.7, 0.7);
+    /* Add shadow to card */
+    background-color: white;
+    border: none;
+    /* Remove border if any */
+    border-radius: 8px;
+    /* Optional: add border radius for rounded corners */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Enhance shadow on hover */
+}
+
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    /* Match card's border radius */
+    border-top-right-radius: 8px;
+    /* Match card's border radius */
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive grid */
+.row-cols-2 .col,
+.row-cols-lg-3 .col {
+    margin-bottom: 1rem;
+}

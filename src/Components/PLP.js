@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { useSelector, useDispatch } from 'react-redux';
 import { setProducts } from '../State/Action/actions';
 import { productList } from '../State/Action/actions';
+import "./PLP.css";
 
 
 // const productList = [{
@@ -266,10 +267,10 @@ const PLP = () => {
   const dispatch = useDispatch();
 
   const products = useSelector(state => state.cartItems.products);
-  debugger;
+
   useEffect(() => {
     dispatch(setProducts(products));
-  }, [dispatch,]);
+  }, [dispatch]);
 
   return (
     <div>

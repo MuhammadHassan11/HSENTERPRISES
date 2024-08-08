@@ -2,9 +2,10 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { CHECKOUT_SUCCESS } from '../State/constant';
 import './Checkout.css';
+import { Link } from "react-router-dom"
 
 function Checkout() {
-  const cartItems = useSelector((state) => state.cartItems.items) || [];
+  const cartItems = useSelector((state) => state.cartItems?.cartData || []);
   const dispatch = useDispatch();
 
   const handleCheckout = (event) => {
@@ -19,10 +20,13 @@ function Checkout() {
     }
   };
 
+  console.log('Cart Items:', cartItems); // Debugging line
+
   return (
-    <div>
-      <div className="mainscreen" style={{ paddingTop: "100px", alignItems: "center" }}>
-        <div className="rightside">
+
+    <div className="checkout-container" style={{ paddingTop: "100px" }}>
+      <div className="checkout-card">
+        <div className="payment-info">
           <form onSubmit={handleCheckout}>
             <h1>CheckOut</h1>
             <h2>Payment Information</h2>
@@ -43,29 +47,30 @@ function Checkout() {
               <p className="expcvv_text2">CVV</p>
               <input type="password" className="inputbox" name="cvv" id="cvv" required />
             </div>
-            <p></p>
-            <button type="submit" className="button">CheckOut</button>
+            <Link to="/success"><button type="submit" className="button">CheckOut</button></Link>
           </form>
         </div>
-      </div>
+        <div className="cart-items">
+          <h2>Cart Items</h2>
+          <div className="row">
+            {cartItems && cartItems.length > 0 ? (
+              cartItems.map((item, index) => (
 
-      <div className="cart-items">
-        <h2>Cart Items</h2>
-        {cartItems.length > 0 ? (
-          cartItems.map((item, index) => (
-            <div key={index} className="cart-item">
-              <img src={item.image} alt={item.name} className="cart-item-image" />
-              <div className="cart-item-details">
-                <h3>{item.name}</h3>
-                <p>{item.description}</p>
-                <p>Quantity: {item.quantity}</p>
-                <p>Price: ${item.price}</p>
-              </div>
-            </div>
-          ))
-        ) : (
-          <p>No items in the cart</p>
-        )}
+                <div key={index} className="cart-item">
+                  <img src={item.image} alt={item.name} className="cart-item-image" />
+                  <div className="cart-item-details">
+                    <h3>{item.name}</h3>
+                    <p>{item.description}</p>
+                    <p>Quantity: {item.quantity}</p>
+                    <p>Price: ${item.price}</p>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>No items in the cart</p>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

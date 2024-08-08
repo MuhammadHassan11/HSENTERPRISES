@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Add_To_Cart, Remove_To_Cart, INCREASE_QUANTITY, DECREASE_QUANTITY, SET_SELECTED_IMAGE, Set_Products, FETCH_Products } from '../constant'
+import { Add_To_Cart, Remove_To_Cart, INCREASE_QUANTITY, DECREASE_QUANTITY, SET_SELECTED_IMAGE, Set_Products, FETCH_Products, CHECKOUT_SUCCESS, Clear_Cart, CLEAR_CART } from '../constant'
 
 // export const productList = [{
 //     Image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG4tbzxjnLt8FqjKgbysPe1KfXOhrLqGOtAg3i7LIPBQ&s",
@@ -295,3 +295,9 @@ export const setProducts = () => {
         }
     }
 };
+export const checkoutSuccess = () => ({
+    type: CHECKOUT_SUCCESS,
+});
+export const clearCart = () => ({
+    type: 'CLEAR_CART',
+});

@@ -19,10 +19,10 @@ const Navbar = (props) => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="/pdp">Products</Link>
+                <Link className="nav-link" aria-current="page" to="/contact">Contact</Link>
               </li>
               {/* <li className="nav-item">
-                <Link className="nav-link " to="/checkout">Checkout</Link>
+                <Link className="nav-link " to="/about">About</Link>
               </li> */}
             </ul>
             <div>
