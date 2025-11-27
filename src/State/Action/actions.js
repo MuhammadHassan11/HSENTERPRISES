@@ -299,6 +299,7 @@ export const setProducts = () => {
     return async (dispatch) => {
         try {
             const API_URL = process.env.REACT_APP_API_URL; // <-- use env variable
+            console.log("Fetching products from:", API_URL);
             const response = await axios.get(`${API_URL}`);
             dispatch({
                 type: FETCH_Products,
