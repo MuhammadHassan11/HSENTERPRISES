@@ -281,10 +281,25 @@ export const setSelectedImage = (imageUrl) => ({
     type: SET_SELECTED_IMAGE,
     payload: imageUrl,
 });
+// export const setProducts = () => {
+//     return async (dispatch) => {
+//         try {
+//             const response = await axios.get('https://localhost:7191/api/Hs');
+//             dispatch({
+//                 type: FETCH_Products,
+//                 payload: response.data
+//             });
+//         } catch (error) {
+//             console.error('Error fetching products:', error);
+//             // Handle the error appropriately
+//         }
+//     }
+// };
 export const setProducts = () => {
     return async (dispatch) => {
         try {
-            const response = await axios.get('https://localhost:7191/api/Hs');
+            const API_URL = process.env.REACT_APP_API_URL; // <-- use env variable
+            const response = await axios.get(`${API_URL}`);
             dispatch({
                 type: FETCH_Products,
                 payload: response.data
@@ -295,6 +310,7 @@ export const setProducts = () => {
         }
     }
 };
+
 export const checkoutSuccess = () => ({
     type: CHECKOUT_SUCCESS,
 });
