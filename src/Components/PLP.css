@@ -237,7 +237,7 @@ body {
 }
 
 /* Medium devices / laptops (≥768px) */
-@media (min-width: 768px) {
+@media (min-width: 700px) {
     .col {
         flex: 1 1 calc(33.33% - 15px);
         /* 3 cards per row */
