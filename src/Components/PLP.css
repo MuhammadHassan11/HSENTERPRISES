@@ -1,7 +1,7 @@
-/* styles.css
+/* styles.css */
 
 /* Basic reset for consistent box sizing */
-/* * {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -14,35 +14,35 @@ body {
 
 .container {
     margin-top: 100px;
-} */
+}
 
-/* .card {
+.card {
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     box-shadow: 0 4px 8px rgba(0.7, 0.7, 0.7, 0.7);
     /* Add shadow to card */
-/* background-color: white;
+    background-color: white;
     border: none;
     /* Remove border if any */
-/* border-radius: 8px; */
-/* Optional: add border radius for rounded corners */
-/* } */
+    border-radius: 8px;
+    /* Optional: add border radius for rounded corners */
+}
 
-/* .card:hover {
+.card:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    Enhance shadow on hover
-} */
+    /* Enhance shadow on hover */
+}
 
-/* .card-img-top {
+.card-img-top {
     height: 250px;
     object-fit: cover;
-    border-top-left-radius: 8px; */
-/* Match card's border radius */
-/* border-top-right-radius: 8px; */
-/* Match card's border radius */
-/* } */
+    border-top-left-radius: 8px;
+    /* Match card's border radius */
+    border-top-right-radius: 8px;
+    /* Match card's border radius */
+}
 
-/* .card-title {
+.card-title {
     font-size: 1.25rem;
     font-weight: bold;
 }
@@ -59,121 +59,10 @@ body {
 
 .btn:hover {
     background-color: #0056b3;
-} */
+}
 
 /* Responsive grid */
-/* .row-cols-2 .col,
+.row-cols-2 .col,
 .row-cols-lg-3 .col {
     margin-bottom: 1rem;
-}  
-
-/* styles.css */
-
-/* Basic reset for consistent box sizing */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-}
-
-/* Container padding for mobile */
-/* Adjusted container padding for larger screens */
-.container {
-    margin-top: 80px;
-    padding: 0 20px;
-    /* more space for larger screens */
-}
-
-/* Card styling remains mostly the same */
-.card {
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    border: none;
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.card-img-top {
-    width: 100%;
-    height: 220px;
-    /* slightly larger for laptops */
-    object-fit: cover;
-}
-
-.card-title {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin: 10px 0 5px 0;
-    padding: 0 12px;
-}
-
-.card-text {
-    font-size: 0.9rem;
-    color: #6c757d;
-    padding: 0 12px 12px 12px;
-}
-
-.btn {
-    font-size: 0.95rem;
-    padding: 8px 14px;
-}
-
-/* Responsive grid for product cards */
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    /* slightly bigger gaps for laptops */
-}
-
-/* Default mobile */
-.col {
-    flex: 1 1 100%;
-    /* 1 column for mobile */
-}
-
-/* Tablets (≥576px) */
-@media (min-width: 576px) {
-    .col {
-        flex: 1 1 calc(50% - 10px);
-        /* 2 columns */
-    }
-}
-
-/* Small laptops / large tablets (≥768px) */
-@media (min-width: 768px) {
-    .col {
-        flex: 1 1 calc(33.33% - 15px);
-        /* 3 columns */
-    }
-}
-
-/* Laptops / large screens (≥992px) */
-@media (min-width: 992px) {
-    .col {
-        flex: 1 1 calc(25% - 15px);
-        /* 4 columns */
-    }
-}
-
-/* Extra large screens (≥1200px) */
-@media (min-width: 1200px) {
-    .col {
-        flex: 1 1 calc(20% - 15px);
-        /* 5 columns */
-    }
 }
