@@ -140,34 +140,40 @@ body {
     /* slightly bigger gaps for laptops */
 }
 
+/* Default mobile */
 .col {
     flex: 1 1 100%;
+    /* 1 column for mobile */
 }
 
-/* Tablets */
+/* Tablets (≥576px) */
 @media (min-width: 576px) {
     .col {
-        flex: 1 1 calc(50% - 15px);
+        flex: 1 1 calc(50% - 10px);
+        /* 2 columns */
     }
 }
 
-/* Small laptops / large tablets */
+/* Small laptops / large tablets (≥768px) */
 @media (min-width: 768px) {
     .col {
         flex: 1 1 calc(33.33% - 15px);
+        /* 3 columns */
     }
 }
 
-/* Large laptops and desktops */
+/* Laptops / large screens (≥992px) */
 @media (min-width: 992px) {
     .col {
         flex: 1 1 calc(25% - 15px);
+        /* 4 columns */
     }
 }
 
-/* Extra large screens */
+/* Extra large screens (≥1200px) */
 @media (min-width: 1200px) {
     .col {
         flex: 1 1 calc(20% - 15px);
+        /* 5 columns */
     }
 }
