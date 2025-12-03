@@ -81,10 +81,10 @@ body {
     background-color: #f8f9fa;
 }
 
+/* Container padding for mobile */
 .container {
-    margin-top: 100px;
-    padding: 0 15px;
-    /* Add horizontal padding for mobile */
+    margin-top: 80px;
+    padding: 0 10px;
 }
 
 /* Card styling */
@@ -95,6 +95,9 @@ body {
     border: none;
     border-radius: 8px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .card:hover {
@@ -104,19 +107,22 @@ body {
 
 .card-img-top {
     width: 100%;
-    height: 200px;
+    height: 180px;
+    /* smaller for mobile */
     object-fit: cover;
 }
 
 .card-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    /* smaller for mobile */
     font-weight: bold;
-    margin: 10px 0 5px 0;
+    margin: 8px 0 4px 0;
     padding: 0 10px;
 }
 
 .card-text {
-    font-size: 0.875rem;
+    font-size: 0.8rem;
+    /* smaller for mobile */
     color: #6c757d;
     padding: 0 10px 10px 10px;
 }
@@ -125,11 +131,13 @@ body {
     background-color: #007bff;
     color: white;
     margin: 10px;
-    padding: 8px 16px;
+    padding: 6px 12px;
+    /* smaller for mobile */
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
+    font-size: 0.875rem;
 }
 
 .btn:hover {
@@ -140,18 +148,18 @@ body {
 .row {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px;
 }
 
 .col {
-    flex: 1 1 calc(100% - 15px);
-    /* default full width for mobile */
+    flex: 1 1 100%;
+    /* full width by default for mobile */
 }
 
 /* Tablets */
 @media (min-width: 576px) {
     .col {
-        flex: 1 1 calc(50% - 15px);
+        flex: 1 1 calc(50% - 10px);
         /* 2 columns */
     }
 }
@@ -159,7 +167,7 @@ body {
 /* Small laptops / large tablets */
 @media (min-width: 768px) {
     .col {
-        flex: 1 1 calc(33.33% - 15px);
+        flex: 1 1 calc(33.33% - 10px);
         /* 3 columns */
     }
 }
@@ -167,7 +175,7 @@ body {
 /* Large laptops and desktops */
 @media (min-width: 992px) {
     .col {
-        flex: 1 1 calc(25% - 15px);
+        flex: 1 1 calc(25% - 10px);
         /* 4 columns */
     }
 }
@@ -175,7 +183,7 @@ body {
 /* Extra large screens */
 @media (min-width: 1200px) {
     .col {
-        flex: 1 1 calc(20% - 15px);
-        /* 5 columns if screen is wide */
+        flex: 1 1 calc(20% - 10px);
+        /* 5 columns */
     }
 }
