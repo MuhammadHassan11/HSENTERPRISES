@@ -228,13 +228,13 @@ body {
 }  */
 
 /* Medium devices (≥768px, landscape tablets / small laptops) */
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .col {
         flex: 1 1 calc(33.33% - 15px);
         /* 3 cards per row */
+/* /
     }
-}
-
+} * */
 /* Large devices (≥992px, laptops / desktops) */
 @media (min-width: 992px) {
     .col {
