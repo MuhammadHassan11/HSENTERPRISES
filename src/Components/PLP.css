@@ -211,8 +211,6 @@ body {
     gap: 15px;
 }
 
-/* Responsive grid adjustments for mobile and tablets */
-
 /* Extra small devices (mobile phones, <576px) */
 .col {
     flex: 1 1 100%;
@@ -220,33 +218,33 @@ body {
 }
 
 /* Small devices (≥576px, portrait tablets) */
-/* @media (min-width: 576px) {
+@media (min-width: 576px) {
     .col {
-        flex: 1 1 calc(50% - 15px);
-        /* 2 cards per row */
-/* }
-}  */
+        flex: 1 1 min(50%, 100%);
+        /* 2 cards per row max */
+    }
+}
 
 /* Medium devices (≥768px, landscape tablets / small laptops) */
-/* @media (min-width: 768px) {
+@media (min-width: 768px) {
     .col {
-        flex: 1 1 calc(33.33% - 15px);
-        /* 3 cards per row */
-/* /
+        flex: 1 1 min(33.33%, 100%);
+        /* 3 cards per row max */
     }
-} * */
+}
+
 /* Large devices (≥992px, laptops / desktops) */
 @media (min-width: 992px) {
     .col {
-        flex: 1 1 calc(33.33% - 15px);
-        /* 3 cards per row - same as laptop layout */
+        flex: 1 1 min(33.33%, 100%);
+        /* 3 cards per row */
     }
 }
 
 /* Extra large devices (≥1200px, large desktops) */
 @media (min-width: 1200px) {
     .col {
-        flex: 1 1 calc(25% - 15px);
+        flex: 1 1 min(25%, 100%);
         /* 4 cards per row */
     }
 }
