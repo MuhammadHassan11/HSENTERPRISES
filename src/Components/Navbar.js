@@ -4,6 +4,7 @@ import { faFontAwesome } from '@fortawesome/free-brands-svg-icons';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom"
 import "./Navbar.css"
+import logo from "../assets/logo.png";
 
 
 const Navbar = (props) => {
