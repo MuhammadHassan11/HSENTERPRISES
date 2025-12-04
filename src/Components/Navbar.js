@@ -12,7 +12,16 @@ const Navbar = (props) => {
     <div>
       <nav className="navbar fixed-top bg-dark  navbar-expand-lg  bg-body-tertiary " data-bs-theme="dark">
         <div className="container-fluid">
-          <Link className="navbar-brand " to="/"><img src="C:\Users\PMLS\Downloads\Gemini_Generated_Image_z31sz7z31sz7z31s.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top rounded-pill" /> </Link>
+          {/* <Link className="navbar-brand " to="/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShzRz25lRk_D4UFKANKCVnnSk6m48XUkfTbA&s" alt="Logo" width="40" height="40" class="d-inline-block align-text-top rounded-pill" /> </Link> */}
+          <Link className="navbar-brand" to="/">
+            <img
+              src={logo}
+              alt="Logo"
+              width="40"
+              height="40"
+              className="d-inline-block align-text-top rounded-pill"
+            />
+          </Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
