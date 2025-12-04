@@ -220,59 +220,35 @@ body {
 @media (min-width: 576px) {
     .col {
         flex: 1 1 calc(50% - 15px);
-        /* 2 cards per row */
+        /* 2 cards */
     }
 
     .card-img-top {
         height: 220px;
     }
-
-    .card-title {
-        font-size: 1.15rem;
-    }
-
-    .card-text {
-        font-size: 0.85rem;
-    }
 }
 
-/* Medium devices / laptops (≥768px) */
-@media (min-width: 680px) {
+/* ========== LAPTOPS (≥768px) – 3 Cards ========== */
+@media (min-width: 768px) {
     .col {
         flex: 1 1 calc(33.33% - 15px);
-        /* 3 cards per row */
+        /* 3 cards */
     }
 
     .card-img-top {
         height: 240px;
     }
-
-    .card-title {
-        font-size: 1.2rem;
-    }
-
-    .card-text {
-        font-size: 0.875rem;
-    }
 }
 
-/* Large devices / desktops (≥992px) */
-@media (min-width: 992px) {
+/* ========== DESKTOP (≥1200px) – Optional 4 Cards ========== */
+@media (min-width: 1200px) {
     .col {
-        flex: 1 1 calc(33.33% - 15px);
-        /* keep 3 cards per row */
+        flex: 1 1 calc(25% - 15px);
+        /* 4 cards */
     }
 
     .card-img-top {
-        height: 250px;
-    }
-
-    .card-title {
-        font-size: 1.25rem;
-    }
-
-    .card-text {
-        font-size: 0.875rem;
+        height: 260px;
     }
 }
 
