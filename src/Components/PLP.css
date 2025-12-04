@@ -145,14 +145,12 @@ body {
     background-color: #f8f9fa;
 }
 
-/* Container */
 .container {
     margin-top: 100px;
     padding: 0 15px;
-    /* horizontal padding for mobile */
 }
 
-/* Card styling */
+/* Card Styling */
 .card {
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     box-shadow: 0 4px 8px rgba(0.7, 0.7, 0.7, 0.7);
@@ -197,30 +195,24 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
 }
 
-.btn:hover {
-    background-color: #0056b3;
-}
-
-/* Responsive grid */
+/* Responsive Grid */
 .row {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
 }
 
+/* Mobile: 1 card */
 .col {
     flex: 1 1 100%;
-    /* Mobile: 1 card per row */
 }
 
-/* Small tablets (≥576px) */
+/* Tablets ≥576px → 2 cards */
 @media (min-width: 576px) {
     .col {
         flex: 1 1 calc(50% - 15px);
-        /* 2 cards */
     }
 
     .card-img-top {
@@ -228,11 +220,10 @@ body {
     }
 }
 
-/* ========== LAPTOPS (≥768px) – 3 Cards ========== */
-@media (min-width: 768px) {
+/* Laptops ≥650px → 3 cards (fixed for 150% screen scaling) */
+@media (min-width: 650px) {
     .col {
         flex: 1 1 calc(33.33% - 15px);
-        /* 3 cards */
     }
 
     .card-img-top {
@@ -240,23 +231,10 @@ body {
     }
 }
 
-/* ========== DESKTOP (≥1200px) – Optional 4 Cards ========== */
+/* Desktops ≥1200px → 4 cards */
 @media (min-width: 1200px) {
     .col {
         flex: 1 1 calc(25% - 15px);
-        /* 4 cards */
-    }
-
-    .card-img-top {
-        height: 260px;
-    }
-}
-
-/* Extra large screens (≥1200px) */
-@media (min-width: 1200px) {
-    .col {
-        flex: 1 1 calc(25% - 15px);
-        /* 4 cards per row */
     }
 
     .card-img-top {
