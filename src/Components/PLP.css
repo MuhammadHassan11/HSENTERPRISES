@@ -1,139 +1,6 @@
 /* styles.css */
 
 /* Basic reset for consistent box sizing */
-/* * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-}
-
-.container {
-    margin-top: 100px;
-}
-
-.card {
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    box-shadow: 0 4px 8px rgba(0.7, 0.7, 0.7, 0.7); */
-/* Add shadow to card */
-/* background-color: white;
-    border: none; */
-/* Remove border if any */
-/* border-radius: 8px; */
-/* Optional: add border radius for rounded corners */
-/* }
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); */
-/* Enhance shadow on hover */
-/* } */
-
-/* .card-img-top {
-    height: 250px;
-    object-fit: cover;
-    border-top-left-radius: 8px; */
-/* Match card's border radius */
-/* border-top-right-radius: 8px; */
-/* Match card's border radius */
-/* }
-
-.card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-}
-
-.card-text {
-    font-size: 0.875rem;
-    color: #6c757d;
-}
-
-.btn {
-    background-color: #007bff;
-    color: white;
-}
-
-.btn:hover {
-    background-color: #0056b3;
-} */
-
-/* Responsive grid */
-/* .row-cols-2 .col,
-.row-cols-lg-3 .col {
-    margin-bottom: 1rem;
-} */
-
-/* Mobile devices (default is fine) */
-
-/* Small tablets */
-/* @media (min-width: 576px) {
-    .card-img-top {
-        height: 220px; */
-/* slightly smaller for tablets */
-/* }
-
-    .card-title {
-        font-size: 1.15rem;
-    }
-
-    .card-text {
-        font-size: 0.85rem;
-    }
-} */
-
-/* Medium devices / small laptops */
-/* @media (min-width: 768px) {
-    .card-img-top {
-        height: 240px;
-    }
-
-    .card-title {
-        font-size: 1.2rem;
-    }
-
-    .card-text {
-        font-size: 0.875rem;
-    }
-} */
-
-/* Large devices / desktops */
-/* @media (min-width: 992px) {
-    .card-img-top {
-        height: 250px;
-    }
-
-    .card-title {
-        font-size: 1.25rem;
-    }
-
-    .card-text {
-        font-size: 0.875rem;
-    }
-} */
-
-/* Extra large devices / wide screens */
-/* @media (min-width: 1200px) {
-    .card-img-top {
-        height: 260px;
-    }
-
-    .card-title {
-        font-size: 1.3rem;
-    }
-
-    .card-text {
-        font-size: 0.9rem;
-    }
-} */
-
-
-/* styles.css */
-
-/* Basic reset for consistent box sizing */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -145,14 +12,12 @@ body {
     background-color: #f8f9fa;
 }
 
-/* Container */
 .container {
     margin-top: 100px;
     padding: 0 15px;
-    /* horizontal padding for mobile */
+    /* horizontal padding for small screens */
 }
 
-/* Card styling */
 .card {
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     box-shadow: 0 4px 8px rgba(0.7, 0.7, 0.7, 0.7);
@@ -213,56 +78,82 @@ body {
 
 .col {
     flex: 1 1 100%;
-    /* Mobile: 1 card per row */
+    /* default: 1 card per row for mobile */
 }
 
-/* Small tablets (≥576px) */
-/* @media (min-width: 576px) {
+/* Mobile devices (extra small, <576px) */
+@media (max-width: 575.98px) {
+    .container {
+        margin-top: 50px;
+        padding: 0 10px;
+    }
+
+    .card-img-top {
+        height: 200px;
+    }
+
+    .card-title {
+        font-size: 1rem;
+        padding: 5px 8px;
+    }
+
+    .card-text {
+        font-size: 0.8rem;
+        padding: 0 8px 8px 8px;
+    }
+
+    .btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+        margin: 5px 0;
+    }
+}
+
+/* Small tablets (≥576px, portrait tablets) */
+@media (min-width: 576px) and (max-width: 767.98px) {
     .col {
         flex: 1 1 calc(50% - 15px);
         /* 2 cards per row */
-/* } */
+    }
 
-.card-img-top {
-    height: 220px;
+    .card-img-top {
+        height: 220px;
+    }
+
+    .card-title {
+        font-size: 1.15rem;
+    }
+
+    .card-text {
+        font-size: 0.85rem;
+    }
 }
 
-.card-title {
-    font-size: 1.15rem;
+/* Medium devices / small laptops (≥768px, landscape tablets) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .col {
+        flex: 1 1 calc(50% - 15px);
+        /* keep 2 cards per row */
+    }
+
+    .card-img-top {
+        height: 240px;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    .card-text {
+        font-size: 0.875rem;
+    }
 }
 
-.card-text {
-    font-size: 0.85rem;
-}
-
-/* } */
-
-/* Medium devices / laptops (≥768px) */
-/* @media (min-width: 700px) {
+/* Large devices / laptops (≥992px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
     .col {
         flex: 1 1 calc(33.33% - 15px);
         /* 3 cards per row */
-/* } */
-
-.card-img-top {
-    height: 240px;
-}
-
-.card-title {
-    font-size: 1.2rem;
-}
-
-.card-text {
-    font-size: 0.875rem;
-}
-
-/* } */
-
-/* Large devices / desktops (≥992px) */
-@media (min-width: 992px) {
-    .col {
-        flex: 1 1 calc(33.33% - 15px);
-        /* keep 3 cards per row */
     }
 
     .card-img-top {
@@ -278,7 +169,7 @@ body {
     }
 }
 
-/* Extra large screens (≥1200px) */
+/* Extra large devices / wide desktops (≥1200px) */
 @media (min-width: 1200px) {
     .col {
         flex: 1 1 calc(25% - 15px);
