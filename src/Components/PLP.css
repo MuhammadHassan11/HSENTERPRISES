@@ -218,20 +218,20 @@ body {
 }
 
 /* Small devices (≥576px, portrait tablets) */
-@media (min-width: 576px) {
+/* @media (min-width: 576px) {
     .col {
         flex: 1 1 min(50%, 100%);
         /* 2 cards per row max */
-    }
-}
+/* }
+} */
 
 /* Medium devices (≥768px, landscape tablets / small laptops) */
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .col {
         flex: 1 1 min(33.33%, 100%);
         /* 3 cards per row max */
-    }
-}
+/* }
+}  */
 
 /* Large devices (≥992px, laptops / desktops) */
 @media (min-width: 992px) {
