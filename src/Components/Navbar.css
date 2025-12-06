@@ -1,116 +1,145 @@
+/* body {
+  margin: 0;
+  font-size: 28px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#navbar {
+  overflow: hidden;
+  background-color: #b45b5b;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky+.content {
+  padding-top: 60px;
+}
+
+.cart-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1;
+  background-color: red;
+  padding-bottom: 7px;
+  padding-left: 5px;
+
+  width: 18px;
+  height: 20px;
+  border-radius: 50%;
+  color: #fff;
+
+
+} */
+
 /* ====================================
    BASE AND BODY STYLES
    ==================================== */
 body {
   margin: 0;
   font-size: 16px;
-  /* Reduced for better readability and mobile view */
   font-family: Arial, Helvetica, sans-serif;
 }
 
 /* ====================================
-   NAVBAR CONTAINER
+   NAVBAR CONTAINER & STICKY BEHAVIOR
    ==================================== */
-#navbar {
-  background-color: #b45b5b;
-  overflow: hidden;
-  display: flex;
-  /* Use Flexbox for alignment */
-  justify-content: space-between;
-  /* Space out items (logo/links group and cart button) */
-  align-items: center;
-  height: 60px;
-  /* Define a fixed height for the navbar */
-  padding: 0 15px;
-  /* Add horizontal padding */
+.navbar {
+  /* Use !important if Bootstrap's fixed-top is overriding color */
+  background-color: #b45b5b !important;
+  transition: background-color 0.3s ease;
 }
 
-/* ====================================
-   STICKY BEHAVIOR
-   ==================================== */
-.sticky {
+.fixed-top {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
-  /* Ensure the navbar is always on top */
+  z-index: 1030;
+  /* Bootstrap's standard z-index for fixed-top */
 }
 
-.sticky+.content {
-  padding-top: 60px;
-  /* Must match the navbar height */
-}
-
-/* ====================================
-   NAVBAR LINKS (General Styling)
-   ==================================== */
-/* Assuming you use anchor tags for navigation links */
-#navbar a {
-  float: left;
-  /* Use float to keep links inline, good for simple layouts */
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 18px;
-}
-
-#navbar a:hover {
-  background-color: #9b4f4f;
-  /* Darker hover effect */
-  color: #fff;
+/* Styling for the standard links inside the collapsed menu */
+.nav-link {
+  color: white !important;
+  /* Ensure links are white on dark background */
+  padding: 10px 15px !important;
 }
 
 /* ====================================
-   CART BUTTON (Optimized)
+   CART BUTTON & BADGE (FIXED)
    ==================================== */
-.cart-btn-container {
-  /* Create a container to position the button relative to the navbar */
+
+/* This targets the container holding the icon and badge (d-flex) 
+   and makes it the reference point for absolute positioning. */
+.container-fluid>.d-flex {
   position: relative;
   height: 40px;
-  /* Needs to be big enough for the button */
-  display: flex;
-  align-items: center;
+  /* Ensure space for the button/badge */
 }
 
+/* This targets the cart icon link (where the FontAwesome icon is) */
+.container-fluid>.d-flex .nav-link {
+  /* Remove padding to make the icon hug the center */
+  padding: 0 !important;
+  margin-right: 15px;
+  /* Add some space before the toggler */
+}
+
+/* The badge that displays the item count */
 .cart-btn {
-  /* Use padding to control the size, ensuring a circular shape */
+  /* Position the badge absolutely over the icon */
+  position: absolute;
+  right: 0;
+  /* Adjust this value based on the final icon size */
+  top: 0;
+  /* Adjust this value */
+  z-index: 1050;
+
+  /* Styling for the circle */
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: red;
   color: #fff;
-  font-size: 14px;
-  /* Size of the number inside the circle */
+
+  /* Size and shape */
+  font-size: 10px;
   font-weight: bold;
-
-  /* Set a fixed size and border-radius */
-  width: 25px;
-  height: 25px;
+  min-width: 18px;
+  height: 18px;
   border-radius: 50%;
-
-  /* Position the button where needed (removed absolute positioning for now) */
-  cursor: pointer;
-  margin-left: 15px;
-  /* Space from other elements */
+  line-height: 1;
+  /* Helps vertical centering */
+  padding: 2px;
 }
 
 /* ====================================
-   MOBILE STYLES (Contact and Toggler)
+   MOBILE LINK LAYOUT
    ==================================== */
 
-/* Example: Styling the contact element to stack vertically on small screens */
-.contact-option {
-  display: flex;
-  flex-direction: column;
-  /* Stacks links vertically */
-  text-align: center;
-}
+/* When the menu is collapsed on mobile, the background should look consistent */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    /* Ensure the collapsed menu takes up the full width */
+    width: 100%;
 
-@media (min-width: 768px) {
-  .contact-option {
-    flex-direction: row;
-    /* Lays out links horizontally on larger screens */
+    /* Set a background color for the drop-down menu */
+    background-color: #9b4f4f;
+
+    /* Align links to the left edge of the drop-down */
+    text-align: left;
+  }
+
+  .nav-item {
+    /* Add a separation line between links */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
