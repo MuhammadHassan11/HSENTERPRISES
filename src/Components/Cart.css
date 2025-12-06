@@ -190,6 +190,54 @@ body {
   transition: color 0.2s;
 }
 
+/*
+ * Styling for the Continue Shopping Link container and elements
+ */
+
+.d-flex.flex-row.align-items-center {
+  /* Ensures the row containing the link and icon stands out slightly */
+  padding-bottom: 10px;
+}
+
+/* Icon Styling (The left arrow) */
+.fa-long-arrow-left {
+  color: #007bff;
+  /* Primary blue color for the icon */
+  font-size: 1.1rem;
+  margin-right: 5px;
+  /* Small space between icon and text */
+  transition: transform 0.3s ease;
+}
+
+/* Link Styling (The "Continue Shopping" text) */
+.back-link {
+  /* The core styling for the text */
+  text-decoration: none;
+  /* Remove underline */
+  color: #007bff;
+  /* Match the icon color */
+  font-weight: 600;
+  /* Bold text */
+  font-size: 1.05rem;
+  /* Slightly larger text */
+
+  /* Transition for a smooth hover effect */
+  transition: color 0.3s ease;
+}
+
+/* Hover Effect for the entire element */
+.d-flex.flex-row.align-items-center:hover .fa-long-arrow-left {
+  /* On hover, move the arrow slightly to the left */
+  transform: translateX(-3px);
+  color: #0056b3;
+  /* Darker blue on hover */
+}
+
+.d-flex.flex-row.align-items-center:hover .back-link {
+  /* On hover, darken the text */
+  color: #0056b3;
+}
+
 .back-link:hover {
   color: #0056b3;
 }
