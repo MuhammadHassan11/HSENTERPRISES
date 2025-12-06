@@ -69,67 +69,46 @@ body {
     background-color: #0056b3;
 }
 
-/* ... [Existing Global Styles are fine and not repeated here] ... */
-
-/* Responsive grid */
+/* ====================================
+   DEFAULT (MOBILE-FIRST): 1 CARD PER ROW
+   ==================================== */
 .row {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    /* Define the gap once */
 }
 
 .col {
+    /* Default is 100% width, guaranteeing 1 card per row on mobile (<576px) */
     flex: 1 1 100%;
-    /* default: 1 card per row for mobile */
 }
 
-/* Mobile devices (extra small, <576px) - Already 1 card per row by default, 
-   but explicit styles for mobile-specific sizes are kept. */
-@media (max-width: 575.98px) {
-    .container {
-        margin-top: 50px;
-        padding: 0 10px;
-    }
-
-    /* Ensure explicitly 1 card per row */
+/* ====================================
+   BREAKPOINT 1: 2 CARDS (Small Tablets/Portrait)
+   ==================================== */
+@media (min-width: 576px) {
     .col {
-        flex: 1 1 100%;
-    }
-
-    /* ... [Other mobile-specific styles] ... */
-}
-
-/* Small tablets (≥576px) - Two cards per row */
-@media (min-width: 576px) and (max-width: 991.98px) {
-    .col {
-        /* 2 cards per row. Width should be slightly less than 50% 
-          to account for the gap */
+        /* (100% / 2) - (15px / 2) = 50% - 7.5px */
         flex: 1 1 calc(50% - 7.5px);
-        /* Half the gap (15px/2 = 7.5px) */
     }
-
-    /* ... [Other tablet-specific styles] ... */
 }
 
-/* Large devices / Laptops (≥992px) - **THREE cards per row** */
-@media (min-width: 992px) and (max-width: 1199.98px) {
+/* ====================================
+   BREAKPOINT 2: 3 CARDS (Laptops/Standard Desktops)
+   ==================================== */
+@media (min-width: 992px) {
     .col {
-        /* 3 cards per row. Gap needs to be subtracted for three items. 
-          (15px * 2) / 3 = 10px */
+        /* (100% / 3) - (2 * 15px / 3) = 33.333% - 10px */
         flex: 1 1 calc(33.333% - 10px);
     }
-
-    /* ... [Other laptop-specific styles] ... */
 }
 
-/* Extra large devices / Wide desktops (≥1200px) - **FOUR cards per row** */
+/* ====================================
+   BREAKPOINT 3: 4 CARDS (Extra Wide Desktops)
+   ==================================== */
 @media (min-width: 1200px) {
     .col {
-        /* 4 cards per row. Gap needs to be subtracted for four items. 
-          (15px * 3) / 4 = 11.25px */
+        /* (100% / 4) - (3 * 15px / 4) = 25% - 11.25px */
         flex: 1 1 calc(25% - 11.25px);
     }
-
-    /* ... [Other wide-desktop specific styles] ... */
 }
