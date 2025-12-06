@@ -1,11 +1,11 @@
-import React from 'react'
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom'
-import { connect } from "react-redux";
-import { useSelector, useDispatch } from 'react-redux';
-import { setProducts } from '../State/Action/actions';
-import { productList } from '../State/Action/actions';
-import "./PLP.css";
+// import React from 'react'
+// import { useEffect } from 'react';
+// import { Link } from 'react-router-dom'
+// import { connect } from "react-redux";
+// import { useSelector, useDispatch } from 'react-redux';
+// import { setProducts } from '../State/Action/actions';
+// import { productList } from '../State/Action/actions';
+// import "./PLP.css";
 
 
 // const productList = [{
@@ -261,41 +261,41 @@ import "./PLP.css";
 // ]
 
 
-const PLP = () => {
+// const PLP = () => {
 
 
-  const dispatch = useDispatch();
+//   const dispatch = useDispatch();
 
-  const products = useSelector(state => state.cartItems.products);
+//   const products = useSelector(state => state.cartItems.products);
 
-  useEffect(() => {
-    dispatch(setProducts(products));
-  }, [dispatch]);
+//   useEffect(() => {
+//     dispatch(setProducts(products));
+//   }, [dispatch]);
 
-  return (
-    <div>
-      <div className="container text-center" style={{ marginTop: "100px" }}>
-        <div className="row row-cols-2 row-cols-lg-3 g-2 g-lg-3 px-4">
-          {/* {productList.map((product) => ( */}
+//   return (
+//     <div>
+//       <div className="container text-center" style={{ marginTop: "100px" }}>
+//         <div className="row row-cols-2 row-cols-lg-3 g-2 g-lg-3 px-4">
+//           {/* {productList.map((product) => ( */}
 
-          {products && products.length > 0 ? (products.map((product) => (
-            <div className="col">
+//           {products && products.length > 0 ? (products.map((product) => (
+//             <div className="col">
 
 
-              <div className="card" style={{ width: "18rem" }}>
-                <img style={{ height: "250px" }} src={product.image} className="card-img-top" alt="Rings" />
-                <div className="card-body">
-                  <h5 className="card-title"><strong>{product.name}</strong></h5>
-                  <p className="card-text">{product.description}</p>
-                  <Link to="/pdp" state={product} className="btn btn-primary">Read More</Link>
-                </div>
-              </div>
-            </div>
+//               <div className="card" style={{ width: "18rem" }}>
+//                 <img style={{ height: "250px" }} src={product.image} className="card-img-top" alt="Rings" />
+//                 <div className="card-body">
+//                   <h5 className="card-title"><strong>{product.name}</strong></h5>
+//                   <p className="card-text">{product.description}</p>
+//                   <Link to="/pdp" state={product} className="btn btn-primary">Read More</Link>
+//                 </div>
+//               </div>
+//             </div>
 
-          ))
-          ) : (<p>Loadingproducts....</p>)}
+//           ))
+//           ) : (<p>Loadingproducts....</p>)}
 
-          {/* <div className="col">
+{/* <div className="col">
             <div className="card" style={{ width: "18rem" }}>
               <img style={{ height: "250px" }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO-Dk_mQIcZetfMfAio39xhcWPJz-PSwSGaMr6RmcDCg&s" className="card-img-top" alt="Wallets" />
               <div className="card-body">
@@ -406,17 +406,75 @@ const PLP = () => {
               </div>
             </div>
           </div> */}
+//     </div>
+//   </div>
+// </div >
+//   )
+// }
+// const mapStateToProps = (state) => ({
+//   products: state.products
+// });
+
+// // const mapDispatchToProps = (dispatch) => ({
+// //   setProducts: (products) => dispatch(setProducts(products))
+// // });
+
+// export default connect(mapStateToProps)(PLP);
+import React from 'react'
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom'
+import { connect } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
+import { setProducts } from '../State/Action/actions';
+import { productList } from '../State/Action/actions';
+import "./PLP.css";
+
+const PLP = ({ products }) => { // 👈 The products prop is received via connect()
+
+  // Removed use of useSelector since products are received via props from connect()
+  // const products = useSelector(state => state.cartItems.products); 
+
+  const dispatch = useDispatch(); // useDispatch can still be used for triggering actions
+
+  useEffect(() => {
+    // This looks like a circular dependency, but we keep your original logic.
+    // NOTE: If you only see 2 cards, ensure products.length is 3 or more.
+    dispatch(setProducts(products));
+  }, [dispatch, products]);
+
+  return (
+    <div>
+      <div className="container text-center" style={{ marginTop: "100px" }}>
+        {/* 🔥 FIX: Removed conflicting Bootstrap classes (row-cols-2, row-cols-lg-3, g-2, g-lg-3).
+            The custom PLP.css will now control the column layout using .row and .col. */}
+        <div className="row px-4">
+
+          {products && products.length > 0 ? (
+            products.map((product) => (
+              <div key={product.id} className="col">
+
+                {/* Removed inline style "width: 18rem" which can cause overflow */}
+                <div className="card">
+                  {/* Removed inline style "height: 250px" since it's defined in PLP.css */}
+                  <img src={product.image} className="card-img-top" alt={product.name} />
+                  <div className="card-body">
+                    <h5 className="card-title"><strong>{product.name}</strong></h5>
+                    <p className="card-text">{product.description}</p>
+                    <Link to="/pdp" state={product} className="btn btn-primary">Read More</Link>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (<p>Loading products....</p>)}
         </div>
       </div>
-    </div >
-  )
-}
-const mapStateToProps = (state) => ({
-  products: state.products
-});
+    </div>
+  );
+};
 
-// const mapDispatchToProps = (dispatch) => ({
-//   setProducts: (products) => dispatch(setProducts(products))
-// });
+const mapStateToProps = (state) => ({
+  // Assuming products are accessed like this for connect
+  products: state.cartItems.products // 👈 Used the useSelector path for consistency
+});
 
 export default connect(mapStateToProps)(PLP);
