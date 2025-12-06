@@ -9,7 +9,7 @@
 } */
 
 
-.product-details {
+/* .product-details {
   padding: 15px;
   align-items: center;
 }
@@ -162,4 +162,264 @@ label.radio input:checked+span {
   margin-bottom: 50px;
   margin-right: 50px;
 
+} */
+
+
+/* ==========================================================
+   GLOBAL & PAGE STYLES
+   ========================================================== */
+body {
+  background: #f0f2f5;
+  /* Light grey background for contrast */
+}
+
+/* Main Cart Container */
+.cart-page-container {
+  background: #fff;
+  /* Stronger, modern shadow effect */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 5px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 12px !important;
+  padding: 30px !important;
+}
+
+/* Continue Shopping Link */
+.back-link {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: #0056b3;
+}
+
+/* Sort Link */
+.sort-link {
+  cursor: pointer;
+  color: #6c757d;
+  font-size: 0.9rem;
+  user-select: none;
+  transition: color 0.2s;
+  font-weight: 500;
+}
+
+.sort-link:hover {
+  color: #343a40;
+}
+
+/* ==========================================================
+   CART ITEM STYLING
+   ========================================================== */
+
+/* Individual Cart Item Card (Modern Look) */
+.cart-item-card {
+  /* Use Flexbox for robust layout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #ffffff;
+  /* White item background */
+  border: 1px solid #e9ecef;
+  border-left: 5px solid #8f37aa;
+  /* Striking left border color */
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+
+  /* Subtle hover effect */
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.cart-item-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Product Name/Price */
+.product-name {
+  font-size: 1.1rem;
+  color: #343a40;
+}
+
+.product-price {
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: #28a745 !important;
+  /* Ensure price is always vibrant green */
+}
+
+/* Remove Button Styling */
+.remove-btn {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.6rem;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  transition: background-color 0.2s;
+}
+
+.remove-btn:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+/* Quantity Button Styling (Making them match the theme) */
+.quantity .btn {
+  border-color: #ced4da !important;
+  color: #495057 !important;
+}
+
+.quantity .form-control {
+  font-weight: 600;
+}
+
+/* ==========================================================
+   SUMMARY CARD (Right Column)
+   ========================================================== */
+.summary-card {
+  background: #fefefe;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 20px !important;
+  /* Added shadow for depth */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.total-row {
+  color: #8f37aa;
+  /* Highlighting the total row */
+  font-weight: bold;
+}
+
+/* ==========================================================
+   CHECKOUT BUTTON (Original Checkout Class retained and styled)
+   ========================================================== */
+
+/* The actual button class */
+.checkout-btn {
+  /* Custom vibrant color from your original .checkout class */
+  background-color: #8f37aa;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+.checkout-btn:hover:not(:disabled) {
+  background-color: #7a3093;
+  /* Darker hover effect */
+}
+
+.checkout-btn:disabled {
+  background-color: #d1b4df;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+
+/* --- Original Floating/Payment Styles Retained Below --- */
+
+/* Removed all conflicting float/margin/positioning styles here: 
+   .desc, .price, .qunatity, .buttons, .remove1, .remove */
+
+.p-about {
+  font-size: 12px;
+}
+
+.table-shadow {
+  -webkit-box-shadow: 5px 5px 15px -2px rgba(0, 0, 0, 0.42);
+  box-shadow: 5px 5px 15px -2px rgba(0, 0, 0, 0.42);
+}
+
+.items {
+  -webkit-box-shadow: 5px 5px 4px -1px rgba(0, 0, 0, 0.25);
+  box-shadow: 5px 5px 4px -1px rgba(0, 0, 0, 0.08);
+}
+
+.information span {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.information {
+  margin-bottom: 5px;
+}
+
+.spec {
+  font-size: 11px;
+}
+
+.type {
+  font-weight: 400;
+  font-size: 10px;
+}
+
+label.radio {
+  cursor: pointer;
+}
+
+label.radio input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+label.radio span {
+  padding: 1px 12px;
+  border: 2px solid #ada9a9;
+  display: inline-block;
+  color: #8f37aa;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 300;
+}
+
+label.radio input:checked+span {
+  border-color: #fff;
+  background-color: blue;
+  color: #fff;
+}
+
+.credit-inputs {
+  background: rgb(102, 102, 221);
+  color: #fff !important;
+  border-color: rgb(102, 102, 221);
+}
+
+.credit-inputs::placeholder {
+  color: #fff;
+  font-size: 13px;
+}
+
+.credit-card-label {
+  font-size: 9px;
+  font-weight: 300;
+}
+
+.form-control.credit-inputs:focus {
+  background: rgb(102, 102, 221);
+  border: rgb(102, 102, 221);
+}
+
+.line {
+  border-bottom: 1px solid rgb(102, 102, 221);
+}
+
+.payment-info {
+  background: rgb(152, 103, 65);
+  padding: 10px;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
