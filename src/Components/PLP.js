@@ -429,7 +429,7 @@ import { setProducts } from '../State/Action/actions';
 import { productList } from '../State/Action/actions';
 import "./PLP.css";
 
-const PLP = ({ products }) => { // 👈 The products prop is received via connect()
+const PLP = ({ products }) => { //  The products prop is received via connect()
 
   // Removed use of useSelector since products are received via props from connect()
   // const products = useSelector(state => state.cartItems.products); 
@@ -445,8 +445,7 @@ const PLP = ({ products }) => { // 👈 The products prop is received via connec
   return (
     <div>
       <div className="container text-center" style={{ marginTop: "100px" }}>
-        {/* 🔥 FIX: Removed conflicting Bootstrap classes (row-cols-2, row-cols-lg-3, g-2, g-lg-3).
-            The custom PLP.css will now control the column layout using .row and .col. */}
+
         <div className="row px-4">
 
           {products && products.length > 0 ? (
@@ -474,7 +473,7 @@ const PLP = ({ products }) => { // 👈 The products prop is received via connec
 
 const mapStateToProps = (state) => ({
   // Assuming products are accessed like this for connect
-  products: state.cartItems.products // 👈 Used the useSelector path for consistency
+  products: state.cartItems.products // Used the useSelector path for consistency
 });
 
 export default connect(mapStateToProps)(PLP);
