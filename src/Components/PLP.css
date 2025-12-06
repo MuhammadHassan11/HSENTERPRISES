@@ -86,7 +86,7 @@ body {
 /* ====================================
    BREAKPOINT 1: 2 CARDS (Small Tablets/Portrait)
    ==================================== */
-@media (min-width: 576px) {
+@media (min-width: 570px) {
     .col {
         /* (100% / 2) - (15px / 2) = 50% - 7.5px */
         flex: 1 1 calc(50% - 7.5px);
