@@ -98,10 +98,11 @@ body {
    ==================================== */
 @media (min-width: 992px) {
     .col {
-        /* (100% / 3) - (2 * 15px / 3) = 33.333% - 10px */
-        flex: 1 1 calc(33.333% - 10px);
+        /* Adjusted for more reliable fit: Subtract 11px instead of 10px */
+        flex: 1 1 calc(33.333% - 11px);
     }
 }
+
 
 /* ====================================
    BREAKPOINT 3: 4 CARDS (Extra Wide Desktops)
