@@ -110,7 +110,7 @@ body {
 @media (min-width: 1200px) {
     .col {
         flex: 1 1 calc(25% - 11.25px);
-        background-color: red !important;
+
         /* Test line */
     }
 }
