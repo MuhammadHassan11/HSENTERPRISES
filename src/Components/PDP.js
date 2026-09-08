@@ -1,120 +1,208 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { connect } from "react-redux";
 import { addToCart, setSelectedImage } from "../State/Action/actions";
 import { useLocation } from 'react-router-dom';
 import "./PDP.css";
 
-function PDP(props) {
-  console.warn('PDP', props.data);
-  let location = useLocation();
+/* Uses Font Awesome icon classes (fa-*) — make sure Font Awesome is
+   linked in public/index.html, same as in the original file. */
 
-  const product = location.state || {}; // Use an empty object as fallback
+const SIZES = ["Small", "Medium", "Large"];
+
+function PDP(props) {
+  const location = useLocation();
+  const product = location.state || {};
+
+  const gallery = useMemo(
+    () => [product.image, ...(product.moreImages || [])].filter(Boolean),
+    [product.image, product.moreImages]
+  );
 
   const [mainImage, setMainImage] = useState(product.image);
+  const [size, setSize] = useState(SIZES[1]);
+  const [qty, setQty] = useState(1);
+  const [saved, setSaved] = useState(false);
+  const [justAdded, setJustAdded] = useState(false);
+
+  const rating = product.rating ?? 4.5;
+  const fullStars = Math.floor(rating);
+  const hasHalf = rating - fullStars >= 0.5;
 
   const handleImageClick = (img) => {
     setMainImage(img);
+    props.handleImageClick && props.handleImageClick(img);
   };
 
-  // Function to reset to the initial image
-  const resetToInitialImage = () => {
-    setMainImage(product.image);
+  const handleAddToCart = () => {
+    props.addToCartHandler({ ...product, size, qty });
+    setJustAdded(true);
+    setTimeout(() => setJustAdded(false), 1600);
   };
+
+  if (!product || !product.name) {
+    return (
+      <div className="pdp-empty">
+        <i className="fa fa-box-open pdp-empty-icon"></i>
+        <h2>Product not found</h2>
+        <p>The item you're looking for isn't available right now.</p>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <header>
-        <div className="p-3 text-center bg-white border-bottom">
-          <div >
-            <div className="row gy-3">
-              {/* Placeholder for possible logo or other header content */}
-            </div>
-          </div>
-        </div>
-      </header>
+    <div className="pdp">
+      <div className="pdp-breadcrumb">
+        <span>Shop</span>
+        <i className="fa fa-chevron-right"></i>
+        <span>{product.type || "Products"}</span>
+        <i className="fa fa-chevron-right"></i>
+        <span className="pdp-breadcrumb-current">{product.name}</span>
+      </div>
 
-      <section className="py-5">
-        <div className="container">
-          <div className="row gx-5">
-            <aside className="col-lg-6">
-              <div className="main-image-card">
-                <a data-fslightbox="mygalley" className="rounded-4" target="_blank" data-type="image" href={mainImage}>
-                  <img src={mainImage} alt="Main product" />
-                </a>
+      <section className="pdp-main">
+        <div className="pdp-gallery">
+          <div className="pdp-main-image">
+            <a
+              data-fslightbox="mygalley"
+              className="pdp-lightbox-link"
+              target="_blank"
+              rel="noreferrer"
+              data-type="image"
+              href={mainImage}
+            >
+              <img src={mainImage} alt={product.name} />
+            </a>
+            {product.stock > 0 && product.stock < 10 && (
+              <span className="pdp-badge pdp-badge-low">Only {product.stock} left</span>
+            )}
+          </div>
+
+          {gallery.length > 1 && (
+            <div className="pdp-thumbs">
+              {gallery.map((img, i) => (
+                <button
+                  key={i}
+                  className={`pdp-thumb ${img === mainImage ? "active" : ""}`}
+                  onClick={() => handleImageClick(img)}
+                  aria-label={`View image ${i + 1}`}
+                >
+                  <img src={img} alt={`${product.name} ${i + 1}`} />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="pdp-info">
+          {product.brand && <div className="pdp-brand">{product.brand}</div>}
+          <h1 className="pdp-title">{product.name}</h1>
+          {product.description && <p className="pdp-subtitle">{product.description}</p>}
+
+          <div className="pdp-rating-row">
+            <div className="pdp-stars" aria-label={`Rated ${rating} out of 5`}>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <i
+                  key={i}
+                  className={`fa ${i < fullStars ? "fa-star" : i === fullStars && hasHalf ? "fas fa-star-half-alt" : "fa-star pdp-star-empty"
+                    }`}
+                ></i>
+              ))}
+              <span className="pdp-rating-num">{rating}</span>
+            </div>
+            {product.stock > 0 ? (
+              <span className="pdp-stock in">
+                <i className="fas fa-check-circle"></i> In stock
+                {product.stock ? ` · ${product.stock} available` : ""}
+              </span>
+            ) : (
+              <span className="pdp-stock out">
+                <i className="fas fa-times-circle"></i> Out of stock
+              </span>
+            )}
+          </div>
+
+          <div className="pdp-price-row">
+            <span className="pdp-price">{product.price}</span>
+            <span className="pdp-price-unit">/per box</span>
+          </div>
+
+          {product.desc && <p className="pdp-desc">{product.desc}</p>}
+
+          <dl className="pdp-specs">
+            {product.type && (
+              <div className="pdp-spec">
+                <dt>Type</dt>
+                <dd>{product.type}</dd>
               </div>
-              <div className="additional-images">
-                {product.moreImages && product.moreImages.map((img, index) => (
-                  <img
-                    key={index}
-                    src={img}
-                    alt={`Additional ${index}`}
-                    onClick={() => handleImageClick(img)} // Call handleImageClick function on click
-                  />
+            )}
+            {product.color && (
+              <div className="pdp-spec">
+                <dt>Color</dt>
+                <dd>{product.color}</dd>
+              </div>
+            )}
+            {product.material && (
+              <div className="pdp-spec">
+                <dt>Material</dt>
+                <dd>{product.material}</dd>
+              </div>
+            )}
+            {product.brand && (
+              <div className="pdp-spec">
+                <dt>Brand</dt>
+                <dd>{product.brand}</dd>
+              </div>
+            )}
+          </dl>
+
+          <div className="pdp-divider" />
+
+          <div className="pdp-options-row">
+            <div className="pdp-size-select">
+              <label>Size</label>
+              <div className="pdp-pill-group">
+                {SIZES.map((s) => (
+                  <button
+                    key={s}
+                    className={`pdp-pill ${size === s ? "active" : ""}`}
+                    onClick={() => setSize(s)}
+                  >
+                    {s}
+                  </button>
                 ))}
               </div>
-            </aside>
-            <main className="col-lg-6">
-              <div className="ps-lg-3">
-                <h4 className="title text-dark">
-                  <b>{product.name}</b> <br />
-                  {product.description}
-                </h4>
-                <div className="d-flex flex-row my-3">
-                  <div className="text-warning mb-1 me-2">
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fas fa-star-half-alt"></i>
-                    <span className="ms-1">4.5</span>
-                  </div>
-                  <span className="text-muted"><i className="fas fa-shopping-basket fa-sm mx-1"></i>{product.stock}</span>
-                  <span className="text-success ms-2">In stock</span>
-                </div>
+            </div>
 
-                <div className="mb-3">
-                  <span className="h5">{product.price}</span>
-                  <span className="text-muted">/per box</span>
-                </div>
-
-                <p>{product.desc}</p>
-
-                <div className="row">
-                  <dt className="col-3">Type</dt>
-                  <dd className="col-9">{product.type}</dd>
-
-                  <dt className="col-3">Color</dt>
-                  <dd className="col-9">{product.color}</dd>
-
-                  <dt className="col-3">Material</dt>
-                  <dd className="col-9">{product.material}</dd>
-
-                  <dt className="col-3">Brand</dt>
-                  <dd className="col-9">{product.brand}</dd>
-                </div>
-
-                <hr />
-
-                <div className="row mb-4">
-                  <div className="col-md-4 col-6">
-                    <label className="mb-2">Size</label>
-                    <select className="form-select border border-secondary" style={{ height: "35px" }}>
-                      <option>Small</option>
-                      <option>Medium</option>
-
-                      <option>Large</option>
-                    </select>
-                  </div>
-                </div>
-
-                <button className="me-1 btn btn-primary shadow-0" onClick={() => { props.addToCartHandler(product) }}>
-                  <i className="me-1 fa fa-shopping-basket"></i> Add to cart
+            <div className="pdp-qty-select">
+              <label>Quantity</label>
+              <div className="pdp-stepper">
+                <button onClick={() => setQty((q) => Math.max(1, q - 1))} aria-label="Decrease quantity">
+                  −
                 </button>
-                <button className="btn btn-light border border-secondary py-2 icon-hover px-3" onClick={resetToInitialImage}>
-                  <i className="me-1 fa fa-heart fa-lg"></i> Save
+                <span>{qty}</span>
+                <button onClick={() => setQty((q) => q + 1)} aria-label="Increase quantity">
+                  +
                 </button>
               </div>
-            </main>
+            </div>
+          </div>
+
+          <div className="pdp-actions">
+            <button
+              className={`pdp-btn-primary ${justAdded ? "added" : ""}`}
+              onClick={handleAddToCart}
+              disabled={product.stock === 0}
+            >
+              <i className={`fa ${justAdded ? "fa-check" : "fa-shopping-basket"}`}></i>
+              {justAdded ? "Added to cart" : "Add to cart"}
+            </button>
+            <button
+              className={`pdp-btn-secondary ${saved ? "saved" : ""}`}
+              onClick={() => setSaved((s) => !s)}
+            >
+              <i className={saved ? "fas fa-heart" : "fa fa-heart"}></i>
+              {saved ? "Saved" : "Save"}
+            </button>
           </div>
         </div>
       </section>
@@ -122,13 +210,13 @@ function PDP(props) {
   );
 }
 
-const mapStateToProps = state => ({
-  data: state.cartItems
+const mapStateToProps = (state) => ({
+  data: state.cartItems,
 });
 
-const mapDispatchToProps = dispatch => ({
-  addToCartHandler: data => dispatch(addToCart(data)),
-  handleImageClick: (imageUrl) => dispatch(setSelectedImage(imageUrl))
+const mapDispatchToProps = (dispatch) => ({
+  addToCartHandler: (data) => dispatch(addToCart(data)),
+  handleImageClick: (imageUrl) => dispatch(setSelectedImage(imageUrl)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PDP);
